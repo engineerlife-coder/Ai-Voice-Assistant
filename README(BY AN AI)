@@ -1,0 +1,72 @@
+Here is a read me file created for me by an ai
+
+# Voice Assistant Library
+
+## Structure
+
+**Libraries (don't touch these):**
+- `Brain.py` - Core AI engine
+- `GuiLib.py` - GUI interface
+- `CommandRunner.py` - Command execution
+
+**Your Wrappers (make your own):**
+- `my_navi.py` - Navi wrapper (personality is IN this file!)
+- `main.py` - Wake word loop (just change which wrapper to use)
+
+## How to Use
+
+### Option 1: Always-Listening Mode (No Wake Word)
+```bash
+python my_navi.py
+```
+Starts up, says "Navi loaded.", then keeps listening forever.
+
+### Option 2: Wake Word Mode
+```bash
+python main.py
+```
+Waits silently for "Hey Navi", then:
+1. Says "Yes?" (greeting)
+2. Listens for your command/question
+3. Responds or executes command
+4. Says "Bye." (goodbye)
+5. Goes back to waiting for wake word
+
+## How Wake Word Mode Works
+
+```
+[Waiting for wake word...]
+User: "Hey Navi"
+Navi: "Yes?"                    ← greeting message
+User: "Turn up volume by 5"
+Navi: "Turned your volume up by 5."
+Navi: "Bye."                    ← goodbye message
+[Back to waiting for wake word...]
+```
+
+## Making Your Own Character
+
+1. **Copy my_navi.py:**
+   ```bash
+   cp my_navi.py my_miku.py
+   ```
+
+2. **Edit PERSONALITY dict at the top:**
+   - Change `name`, `messages`, `voice`, `system_prompt`, etc.
+
+3. **To use it:**
+   - **Standalone:** `python my_miku.py`
+   - **With wake word:** Edit `main.py` line 14 to `PERSONALITY_WRAPPER = "my_miku.py"`
+
+## File Layout
+```
+project/
+├── Brain.py          # Library - AI engine (don't touch)
+├── GuiLib.py         # Library - GUI (don't touch)
+├── CommandRunner.py  # Library - Commands (don't touch)
+├── main.py           # Wake word loop (just change line 14!)
+└── my_navi.py        # Your wrapper - PERSONALITY IS HERE!
+    └── (copy this to make my_miku.py, etc.)
+```
+
+**Key Point:** main.py never hardcodes personality info. It just loads whatever wrapper file you tell it to use!
