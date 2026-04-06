@@ -23,3 +23,14 @@ import wave
 from pydub import AudioSegment
 from pydub.playback import play
 from piper.voice import PiperVoice
+
+
+Also you will need to provde the exact path to these following models
+
+vosk
+piper
+porcupine
+
+Along with getting api keys and adding them into the code for these following libraries
+
+porcupine
